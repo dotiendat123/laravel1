@@ -32,7 +32,6 @@
         .error {
             font-size: 13px;
             height: 18px;
-            /* cố định chiều cao */
             margin-bottom: 10px;
         }
 
@@ -67,6 +66,16 @@
 
         input::placeholder {
             color: #999;
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .login-link a {
+            color: #2563eb;
+            text-decoration: none;
         }
     </style>
 </head>
@@ -117,6 +126,12 @@
 
             <button type="submit">Đăng ký</button>
         </form>
+
+        {{-- Link chuyển sang trang đăng nhập --}}
+        <div class="login-link">
+            <span>Bạn đã có tài khoản? </span>
+            <a href="{{ route('login') }}">Đăng nhập ngay</a>
+        </div>
     </div>
 
 </body>
