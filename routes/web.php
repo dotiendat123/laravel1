@@ -11,9 +11,9 @@ Route::get('/home', function () {
 });
 Route::get('/sendmail', function () {
     try {
-        Mail::raw('Đây là mail test gửi từ Laravel x Mailtrap 🧪', function ($message) {
+        Mail::raw('Đây là mail test gửi từ Laravel x Mailtrap ', function ($message) {
             $message->to('example@gmail.com')
-                ->subject('🔥 Laravel Mailtrap Test');
+                ->subject(' Laravel Mailtrap Test');
         });
 
         return 'Gửi mail thành công!';
