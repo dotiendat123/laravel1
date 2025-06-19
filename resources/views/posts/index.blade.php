@@ -4,7 +4,9 @@
 
 @section('content')
     <div class="container mt-5">
-        {{-- Trạng thái tài khoản --}}
+
+        {{-- Xin chào người dùng --}}
+        <p><strong>Xin chào, {{ Auth::user()->name }}</strong></p>
         <p><strong>Trạng thái tài khoản:</strong> {{ Auth::user()->status->label() }}</p>
 
         {{-- Header: Tạo mới + Đăng xuất --}}
@@ -28,7 +30,7 @@
         </ul>
     </div>
 
-    {{-- Thông báo thành công sau đăng nhập --}}
+    {{-- Thông báo thành công --}}
     @if(session('success'))
         <script>
             window.addEventListener('DOMContentLoaded', function () {
