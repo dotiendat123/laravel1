@@ -35,7 +35,7 @@ class RegisterController extends Controller
                 ->subject('Chào bạn!');
         });
 
-        // return redirect()->route('login')->with('success', 'Đăng ký tài khoản thành công');
-        return redirect()->route('home');
+        return redirect()->route('home')->with('success', 'Đăng ký tài khoản thành công');
+        // return redirect()->route('home');
     }
 }
