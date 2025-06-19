@@ -2,13 +2,16 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Mail;
+use App\Http\Controllers\HomeController;
 
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/home', function () {
-    return view('home');
-});
+// Route::get('/home', function () {
+//     return view('home');
+// });
+Route::get('/home', [HomeController::class, 'index']);
+
 Route::get('/sendmail', function () {
     try {
         Mail::raw('Đây là mail test gửi từ Laravel x Mailtrap ', function ($message) {

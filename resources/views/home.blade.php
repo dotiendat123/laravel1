@@ -21,5 +21,9 @@
 @section('content')
     <div class="d-flex justify-content-center align-items-center" style="height: 70vh; background-color: white;">
         <h2 class="text-warning">Đỗ Tiến Đạt</h2>
+        {{-- <h1>Xin chào, {{ $user->name }}</h1> --}}
+        <h1>
+            Xin chào, {{ $user ? $user->name : 'Khách' }}
+        </h1>
     </div>
 @endsection
