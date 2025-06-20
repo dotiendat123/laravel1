@@ -9,7 +9,7 @@ use App\Enums\UserStatus;
 use App\Http\Requests\RegisterUserRequest;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
-
+use App\Jobs\SendWelcomeEmail;
 class RegisterController extends Controller
 {
     //
@@ -30,11 +30,8 @@ class RegisterController extends Controller
         ]);
 
         // Gửi email cảm ơn
-        Mail::raw("Cảm ơn bạn đã đăng ký.", function ($message) use ($user) {
-            $message->to($user->email)
-                ->subject('Chào bạn!');
-        });
-
+        SendWelcomeEmail::dispatch($user);
+        // SendWelcomeEmail::dispatch($user)->delay(now()->addSeconds(10));
         return redirect()->route('login')->with('success', 'Đăng ký tài khoản thành công');
         // return redirect()->route('home');
     }
