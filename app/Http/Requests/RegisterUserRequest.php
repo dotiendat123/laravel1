@@ -5,6 +5,8 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rules\Password;
 
+use function Laravel\Prompts\confirm;
+
 class RegisterUserRequest extends FormRequest
 {
     /**
@@ -31,6 +33,7 @@ class RegisterUserRequest extends FormRequest
                 'required',
                 'string',
                 'min:8',
+                'confirmed',
                 Password::min(8)
                     ->mixedCase()
                     ->numbers()
@@ -61,6 +64,7 @@ class RegisterUserRequest extends FormRequest
             'password.mixed' => 'Mật khẩu phải chứa cả chữ hoa và chữ thường.',
             'password.numbers' => 'Mật khẩu phải chứa ít nhất một số.',
             'password.symbols' => 'Mật khẩu phải chứa ít nhất một ký tự đặc biệt.',
+            'password.confirmed' => 'Mật khẩu xác nhận không khớp.',
 
 
 

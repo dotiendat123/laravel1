@@ -130,6 +130,13 @@
                 <div class="error {{ $errors->has('password') ? 'visible' : 'invisible' }}">
                     {{ $errors->first('password') }}
                 </div>
+
+            </div>
+
+            {{-- Xác nhận mật khẩu --}}
+            <div>
+                <input type="password" name="password_confirmation" placeholder="Nhập lại mật khẩu">
+
             </div>
 
             <button type="submit">Đăng ký</button>
