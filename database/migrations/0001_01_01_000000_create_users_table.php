@@ -29,7 +29,7 @@ return new class extends Migration
             $table->string('address')->nullable();
             $table->tinyInteger('status')->default(0); // 0: chưa kích hoạt
             $table->enum('role', ['admin', 'user'])->default('user');
-            $table->timestamps()->nullable();;
+            $table->timestamps();
         });
         //Trường nào không có default thì cho nullable hết.
 
