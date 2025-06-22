@@ -37,7 +37,7 @@ class RegisterController extends Controller
                 ]);
 
                 // Gửi email cảm ơn sau 10s (delay trong queue)
-                SendWelcomeEmail::dispatch($user)->delay(now()->addSeconds(10));
+                SendWelcomeEmail::dispatch($user)->delay(now()->addSeconds(5));
             });
 
             return redirect()->route('login')->with('success', 'Đăng ký tài khoản thành công');
