@@ -20,19 +20,19 @@ class CheckUserStatus
             case UserStatus::Locked:
                 Auth::logout();
                 return redirect()->route('login')->withErrors([
-                    'email' => 'Tài khoản của bạn đã bị khóa. Vui lòng liên hệ quản trị viên.'
+                    'account_status' => 'Tài khoản của bạn đã bị khóa. Vui lòng liên hệ quản trị viên.'
                 ]);
 
             case UserStatus::Pending:
                 Auth::logout();
                 return redirect()->route('login')->withErrors([
-                    'email' => 'Tài khoản của bạn đang chờ phê duyệt.'
+                    'account_status' => 'Tài khoản của bạn đang chờ phê duyệt.'
                 ]);
 
             case UserStatus::Rejected:
                 Auth::logout();
                 return redirect()->route('login')->withErrors([
-                    'email' => 'Tài khoản của bạn đã bị từ chối.'
+                    'account_status' => 'Tài khoản của bạn đã bị từ chối.'
                 ]);
 
             case UserStatus::Approved:
@@ -43,7 +43,7 @@ class CheckUserStatus
         // Phòng trường hợp không đúng enum
         Auth::logout();
         return redirect()->route('login')->withErrors([
-            'email' => 'Tài khoản không hợp lệ.'
+            'account_status' => 'Tài khoản không hợp lệ.'
         ]);
     }
 }

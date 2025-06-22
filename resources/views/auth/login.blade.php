@@ -89,13 +89,19 @@
     <div class="form-box">
         <h2>Đăng nhập</h2>
 
-        @if ($errors->any())
+        {{-- @if ($errors->any())
+        <div class="alert-error">
+            @foreach ($errors->all() as $error)
+            <div>{{ $error }}</div>
+            @endforeach
+        </div>
+        @endif --}}
+        @if ($errors->has('account_status'))
             <div class="alert-error">
-                @foreach ($errors->all() as $error)
-                    <div>{{ $error }}</div>
-                @endforeach
+                {{ $errors->first('account_status') }}
             </div>
         @endif
+
 
         @if(session('success'))
             <div class="success">{{ session('success') }}</div>
@@ -111,7 +117,8 @@
             <div>
                 <input type="password" name="password" placeholder="Mật khẩu">
                 <div class="error {{ $errors->has('password') ? 'visible' : 'invisible' }}">
-                    {{ $errors->first('password') }}</div>
+                    {{ $errors->first('password') }}
+                </div>
             </div>
             <button type="submit">Đăng nhập</button>
         </form>

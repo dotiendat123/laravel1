@@ -27,3 +27,6 @@ Cấu hính file .env:
 php artisan migrate
 
 php artisan db:seed
+
+
+php artisan queue:work // để chạy queue tự động gửi mail

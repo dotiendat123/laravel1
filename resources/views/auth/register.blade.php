@@ -102,7 +102,7 @@
 
             {{-- Tên --}}
             <div>
-                <input type="text" name="last_name" value="{{ old('last_name') }}" maxlength="30" placeholder="Tên">
+                <input type="text" name="last_name" value="{{ old('last_name') }}" placeholder="Tên">
                 <div class="error {{ $errors->has('last_name') ? 'visible' : 'invisible' }}">
                     {{ $errors->first('last_name') }}
                 </div>
@@ -110,7 +110,7 @@
 
             {{-- Email --}}
             <div>
-                <input type="email" name="email" value="{{ old('email') }}" maxlength="100" placeholder="Email">
+                <input type="text" name="email" value="{{ old('email') }}" placeholder="Email">
                 <div class="error {{ $errors->has('email') ? 'visible' : 'invisible' }}">
                     {{ $errors->first('email') }}
                 </div>

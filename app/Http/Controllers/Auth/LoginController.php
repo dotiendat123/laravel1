@@ -15,26 +15,32 @@ class LoginController extends Controller
     {
         return view('auth.login');
     }
+    // public function __construct()
+    // {
+    //     $this->middleware('guest')->except('logout');
+    // }
+
 
     public function store(LoginUserRequest $request)
     {
         $credentials = $request->only('email', 'password');
 
-        $user = User::where('email', $credentials['email'])->first();
+        // $user = User::where('email', $credentials['email'])->first();
 
-        if ($user) {
-            if ($user->status === UserStatus::Locked) {
-                return back()->withErrors(['email' => 'Tài khoản của bạn đã bị khóa.']);
-            }
+        // if ($user) {
+        //     if ($user->status === UserStatus::Locked) {
+        //         return back()->withErrors(['email' => 'Tài khoản của bạn đã bị khóa.']);
+        //     }
 
-            if ($user->status === UserStatus::Pending) {
-                return back()->withErrors(['email' => 'Tài khoản của bạn đang chờ phê duyệt.']);
-            }
+        //     if ($user->status === UserStatus::Pending) {
+        //         return back()->withErrors(['email' => 'Tài khoản của bạn đang chờ phê duyệt.']);
+        //     }
 
-            if ($user->status === UserStatus::Rejected) {
-                return back()->withErrors(['email' => 'Tài khoản của bạn đã bị từ chối.']);
-            }
-        }
+        //     if ($user->status === UserStatus::Rejected) {
+        //         return back()->withErrors(['email' => 'Tài khoản của bạn đã bị từ chối.']);
+        //     }
+        // }
+
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
@@ -42,9 +48,10 @@ class LoginController extends Controller
         }
 
         return back()->withErrors([
-            'email' => 'Email hoặc mật khẩu không đúng.',
+            'account_status' => 'Email hoặc mật khẩu không đúng.',
         ])->onlyInput('email');
     }
+
 
     public function destroy(Request $request)
     {
