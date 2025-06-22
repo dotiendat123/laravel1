@@ -20,6 +20,16 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .required {
+            color: red;
+        }
+
         input {
             width: 100%;
             padding: 10px;
@@ -102,7 +112,9 @@
 
             {{-- Họ --}}
             <div>
-                <input type="text" name="first_name" value="{{ old('first_name') }}" maxlength="30" placeholder="Họ">
+                <label for="first_name">Họ <span class="required">*</span></label>
+                <input type="text" id="first_name" name="first_name" value="{{ old('first_name') }}" maxlength="30"
+                    placeholder="Họ">
                 <div class="error {{ $errors->has('first_name') ? 'visible' : 'invisible' }}">
                     {{ $errors->first('first_name') }}
                 </div>
@@ -110,7 +122,8 @@
 
             {{-- Tên --}}
             <div>
-                <input type="text" name="last_name" value="{{ old('last_name') }}" placeholder="Tên">
+                <label for="last_name">Tên <span class="required">*</span></label>
+                <input type="text" id="last_name" name="last_name" value="{{ old('last_name') }}" placeholder="Tên">
                 <div class="error {{ $errors->has('last_name') ? 'visible' : 'invisible' }}">
                     {{ $errors->first('last_name') }}
                 </div>
@@ -118,7 +131,8 @@
 
             {{-- Email --}}
             <div>
-                <input type="text" name="email" value="{{ old('email') }}" placeholder="Email">
+                <label for="email">Email <span class="required">*</span></label>
+                <input type="text" id="email" name="email" value="{{ old('email') }}" placeholder="Email">
                 <div class="error {{ $errors->has('email') ? 'visible' : 'invisible' }}">
                     {{ $errors->first('email') }}
                 </div>
@@ -126,17 +140,21 @@
 
             {{-- Mật khẩu --}}
             <div>
-                <input type="password" name="password" placeholder="Mật khẩu">
+                <label for="password">Mật khẩu <span class="required">*</span></label>
+                <input type="password" id="password" name="password" placeholder="Mật khẩu">
                 <div class="error {{ $errors->has('password') ? 'visible' : 'invisible' }}">
                     {{ $errors->first('password') }}
                 </div>
-
             </div>
 
             {{-- Xác nhận mật khẩu --}}
             <div>
-                <input type="password" name="password_confirmation" placeholder="Nhập lại mật khẩu">
-
+                <label for="password_confirmation">Nhập lại mật khẩu <span class="required">*</span></label>
+                <input type="password" id="password_confirmation" name="password_confirmation"
+                    placeholder="Nhập lại mật khẩu">
+                <div class="error {{ $errors->has('password_confirmation') ? 'visible' : 'invisible' }}">
+                    {{ $errors->first('password_confirmation') }}
+                </div>
             </div>
 
             <button type="submit">Đăng ký</button>

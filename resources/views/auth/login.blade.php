@@ -20,6 +20,16 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .required {
+            color: red;
+        }
+
         input {
             width: 100%;
             padding: 10px;
@@ -102,11 +112,9 @@
             </div>
         @endif
 
-
         {{-- @if(session('success'))
         <div class="success">{{ session('success') }}</div>
         @endif --}}
-
 
         {{-- sử dụng blade component: --}}
         {{-- @if (session('success'))
@@ -118,17 +126,23 @@
 
         <form method="POST" action="{{ route('login') }}">
             @csrf
+
             <div>
-                <input type="email" name="email" placeholder="Email" value="{{ old('email') }}">
-                <div class="error {{ $errors->has('email') ? 'visible' : 'invisible' }}">{{ $errors->first('email') }}
+                <label for="email">Email <span class="required">*</span></label>
+                <input type="email" id="email" name="email" placeholder="Email" value="{{ old('email') }}">
+                <div class="error {{ $errors->has('email') ? 'visible' : 'invisible' }}">
+                    {{ $errors->first('email') }}
                 </div>
             </div>
+
             <div>
-                <input type="password" name="password" placeholder="Mật khẩu">
+                <label for="password">Mật khẩu <span class="required">*</span></label>
+                <input type="password" id="password" name="password" placeholder="Mật khẩu">
                 <div class="error {{ $errors->has('password') ? 'visible' : 'invisible' }}">
                     {{ $errors->first('password') }}
                 </div>
             </div>
+
             <button type="submit">Đăng nhập</button>
         </form>
 
