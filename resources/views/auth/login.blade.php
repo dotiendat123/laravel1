@@ -103,8 +103,17 @@
         @endif
 
 
-        @if(session('success'))
-            <div class="success">{{ session('success') }}</div>
+        {{-- @if(session('success'))
+        <div class="success">{{ session('success') }}</div>
+        @endif --}}
+
+
+        {{-- sử dụng blade component: --}}
+        {{-- @if (session('success'))
+        <x-alert-success :message="session('success')" />
+        @endif --}}
+        @if (session('success'))
+            <x-alert-success :message="session('success')" />
         @endif
 
         <form method="POST" action="{{ route('login') }}">

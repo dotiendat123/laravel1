@@ -89,6 +89,14 @@
             <div class="success">{{ session('success') }}</div>
         @endif
 
+        @if ($errors->has('register_error'))
+            <div class="alert-error">
+                {{-- {{ $errors->first('register_error') }} --}}
+                {{-- sử dụng component alert --}}
+                <x-alert-success :message="$errors->first('register_error')" />
+            </div>
+        @endif
+
         <form method="POST" action="{{ route('register') }}">
             @csrf
 

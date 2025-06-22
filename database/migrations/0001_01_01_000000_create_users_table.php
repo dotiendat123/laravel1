@@ -22,15 +22,16 @@ return new class extends Migration
         // });
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('first_name');
-            $table->string('last_name');
+            $table->string('first_name')->nullable();;
+            $table->string('last_name')->nullable();;
             $table->string('email')->unique();
-            $table->string('password');
+            $table->string('password')->nullable();;
             $table->string('address')->nullable();
             $table->tinyInteger('status')->default(0); // 0: chưa kích hoạt
             $table->enum('role', ['admin', 'user'])->default('user');
-            $table->timestamps();
+            $table->timestamps()->nullable();;
         });
+        //Trường nào không có default thì cho nullable hết.
 
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
