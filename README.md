@@ -30,3 +30,6 @@ php artisan db:seed
 
 
 php artisan queue:work // để chạy queue tự động gửi mail
+php artisan queue:work --daemon
+
+// Nếu chạy dự án mà bị lỗi không gửi được mail thì tạo inbox mới trong mailtrap và cấu hình lại
